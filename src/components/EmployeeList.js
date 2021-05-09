@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Employee from './Employee';
 import { EmployeeContext } from '../contexts/EmployeeContext';
 import { Button, Modal } from 'react-bootstrap'
@@ -9,11 +9,12 @@ const EmployeeList = () => {
 
     const { employees } = useContext(EmployeeContext)
     const [show, setShow] = useState(false)
+    
     const handleClose = () => setShow(!show);
 
 
     return (
-        <>
+        <React.Fragment>
             <div className="table-title">
                 <div className="row">
                     <div className="col-sm-6">
@@ -47,7 +48,7 @@ const EmployeeList = () => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <AddForm />
+                    <AddForm  handleClose={handleClose}/>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant='secondary' onClick={handleClose}>
@@ -60,7 +61,7 @@ const EmployeeList = () => {
             </Modal>
 
 
-        </>
+        </React.Fragment>
     )
 }
 
